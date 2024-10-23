@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" --snapshot "ip_simcheck_behav" "xil_defaultlib.ip_simcheck" -log "elaborate.log" 
