@@ -42,14 +42,14 @@ entity instruction_processor is
 end instruction_processor;
 
 architecture Behavioral of instruction_processor is
-signal pc_int :std_logic_vector(15 downto 0):= "0000000000000000";
-signal next_pc: std_logic_vector(15 downto 0):= "0000000000000000";
+signal pc_int :std_logic_vector(15 downto 0):= "0011000001110001";
+signal next_pc: std_logic_vector(15 downto 0):= "0011000001110001";
 signal branch: std_logic:= '1';
 signal int_inst: std_logic_vector(7 downto 0);
 type instruction_decoder_state is (T1, T2, T3);
 signal curr_state, next_state: instruction_decoder_state:= T1;
 begin
-process is
+process(clk) is
 begin
 if rising_edge(clk) then
     if reset='1' then
