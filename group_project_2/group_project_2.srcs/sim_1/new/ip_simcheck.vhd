@@ -49,29 +49,15 @@ end component instruction_processor;
 
 signal rd, wr, iom, s1, s0: std_logic:= '1';
 signal clock, Reset, dodata, ale: std_logic:= '0';
+--signal clock: std_logic;
 signal a, ad, ins_reg: std_logic_vector(7 downto 0);
 signal pc: std_logic_vector(15 downto 0);
 
 begin
 
-ins_pr : instruction_processor 
-    port map(clk => clock, 
-    reset => Reset, 
-    DoData => dodata, 
-    RD => rd, 
-    WR => wr, 
-    PC => pc, 
-    instruction_register => ins_reg,
-    IOM => iom,
-    ALE => ale,
-    S1 => s1,
-    S0 => s0,
-    A => a,
-    AD => ad
-    );
-
 process is
 begin
+--clock <= '';
 pc <= "0001001010011010";
 clock <= '1';
 wait for 10ns;
@@ -88,5 +74,8 @@ clock <= '0';
 wait for 10ns;
 wait;
 end process;
+
+ins_pr : instruction_processor 
+    port map(clock,Reset,dodata,rd,wr,pc,ins_reg,iom,ale,s1,s0,a,ad);
 
 end Behavioral;
